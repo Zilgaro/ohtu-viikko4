@@ -29,6 +29,40 @@ public class Stepdefs {
         element.click();
     }
 
+    @Given("^user with username \"([^\"]*)\" with password \"([^\"]*)\" is successfully created$")
+    public void user_with_username_with_password_is_succesfully_created(String username, String password) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        driver.get(baseUrl);
+        WebElement element = driver.findElement(By.linkText("register new user"));
+        element.click();
+        element = driver.findElement(By.name("username"));
+        element.sendKeys(username);
+
+        element = driver.findElement(By.name("password"));
+        element.sendKeys(password);
+
+        element = driver.findElement(By.name("passwordConfirmation"));
+        element.sendKeys(password);
+        element.submit();
+    }
+
+    @Given("^user with username \"([^\"]*)\" and password \"([^\"]*)\" is unsuccessfully created$")
+    public void user_with_username_and_password_is_unsuccesfully_created(String username, String password) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        driver.get(baseUrl);
+        WebElement element = driver.findElement(By.linkText("register new user"));
+        element.click();
+        element = driver.findElement(By.name("username"));
+        element.sendKeys(username);
+
+        element = driver.findElement(By.name("password"));
+        element.sendKeys(password);
+
+        element = driver.findElement(By.name("passwordConfirmation"));
+        element.sendKeys(password);
+        element.submit();
+    }
+
     @Then("^user is created$")
     public void user_is_created() throws Throwable {
         pageHasContent("Welcome to Ohtu Application!");
