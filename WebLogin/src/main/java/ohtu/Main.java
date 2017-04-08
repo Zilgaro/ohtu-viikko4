@@ -18,6 +18,7 @@ public class Main {
     static AuthenticationService authService;
     
     public static void main(String[] args) {
+        System.setProperty("webdriver.chrome.driver","C:/Users/Zilgaro/chromedriver_win32/chromedriver.exe");
         port(findOutPort());
               
         get("/", (request, response) -> {
